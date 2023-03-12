@@ -34,9 +34,14 @@ const getAllClasses = async (creatorId) => {
   });
   return response;
 };
+const getClassByPk = async (id) => {
+  const response = await Classes.findByPk(id);
+  return response;
+};
 module.exports = {
   addClass,
   deleteClass,
   updateClass,
   getAllClasses,
+  getClassByPk,
 };

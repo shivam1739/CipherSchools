@@ -7,6 +7,8 @@ const Port = process.env.PORT;
 const cors = require("cors");
 const roleRoute = require("./routes/role.routes");
 const classRout = require("./routes/class.routes");
+const likeRoutes = require("./routes/like.routes");
+const commentRoute = require("./routes/comment.routes");
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
@@ -15,7 +17,9 @@ app.use(cors());
 authRoute(app);
 roleRoute(app);
 classRout(app);
+likeRoutes(app);
+commentRoute(app);
 app.listen(Port, async () => {
-  await sequelize.sync();
+  await sequelize.sync({ force: false });
   console.log(`app listning to port${Port}`);
 });
