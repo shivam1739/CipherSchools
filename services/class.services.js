@@ -29,9 +29,7 @@ const updateClass = async (data, classId) => {
   return response;
 };
 const getAllClasses = async (creatorId) => {
-  const response = await Classes.findAll({
-    where: { creatorId: creatorId },
-  });
+  const response = await Classes.findAll();
   return response;
 };
 const getClassByPk = async (id) => {
