@@ -17,6 +17,7 @@ const getuserbyEmail = async (emailData) => {
     where: {
       email: emailData,
     },
+    include: [{ model: Role }],
   });
 
   return response;
