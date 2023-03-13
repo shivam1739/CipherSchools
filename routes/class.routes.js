@@ -3,7 +3,7 @@ const classController = require("../controller/class.controller");
 const routes = (app) => {
   app.get(
     "/ciphershools/api/v1/classes",
-    middelWare.isAuthenticated,
+    middelWare.isAuthenticated dssda,
     classController.getAllClasses
   );
 
