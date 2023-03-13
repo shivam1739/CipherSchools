@@ -2,10 +2,11 @@ const middelWare = require("../middelWare/authenctication.validators");
 const classController = require("../controller/class.controller");
 const routes = (app) => {
   app.get(
-    "/ciphershools/api/v1/classes/:creatorId",
+    "/ciphershools/api/v1/classes",
     middelWare.isAuthenticated,
     classController.getAllClasses
   );
+
   app.post(
     "/ciphershools/api/v1/class/add",
     middelWare.isAuthenticated,

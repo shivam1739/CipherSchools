@@ -63,20 +63,13 @@ const updateClass = async (req, res) => {
   }
 };
 const getAllClasses = async (req, res) => {
-  if (req.params.creatorId) {
-    const response = await classServices.getAllClasses(req.params.creatorId);
-    return res.json({
-      messeage: "successfully find all classes",
-      code: 200,
-      success: true,
-      data: response,
-    });
-  } else {
-    return res.json({
-      code: 400,
-      success: true,
-    });
-  }
+  const response = await classServices.getAllClasses();
+  return res.json({
+    messeage: "successfully find all classes",
+    code: 200,
+    success: true,
+    data: response,
+  });
 };
 module.exports = {
   addClass,
