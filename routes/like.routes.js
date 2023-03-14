@@ -1,8 +1,8 @@
 const middelWare = require("../middelWare/authenctication.validators");
 const likeController = require("../controller/like.controller");
 const routes = (app) => {
-  app.post(
-    "/ciphershools/api/v1/like",
+  app.get(
+    "/ciphershools/api/v1/class/:classId/like",
     middelWare.isAuthenticated,
     likeController.likeStatus
   );
