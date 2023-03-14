@@ -7,13 +7,15 @@ const addLike = async (userId, classId) => {
   });
   return response;
 };
-const removeLike = async (userId, classId) => {
-  const response = await Like.destroy({
-    where: {
-      classId: classId,
-      userId: userId,
+const updateLike = async (userId, classId, like) => {
+  const response = await Like.update(
+    {
+      like: like,
     },
-  });
+    {
+      where: { userId: userId, classId: classId },
+    }
+  );
   return response;
 };
 const getLikesByUser = async (userId, classId) => {
@@ -32,7 +34,7 @@ const countLike = async (classId) => {
 
 module.exports = {
   addLike,
-  removeLike,
+  updateLike,
   getLikesByUser,
   countLike,
 };

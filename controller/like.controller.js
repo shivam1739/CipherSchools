@@ -11,14 +11,21 @@ const likeStatus = async (req, res) => {
         userId,
         req.params.classId
       );
-      const response = like
-        ? await likeServices.removeLike(userId, req.body.classId)
-        : await likeServices.addLike(userId, req.body.classId);
-      //   console.log(response);
+      console.log(like, "like===========================");
+      let response = undefined;
+      if (like) {
+        response =
+          like.like == true
+            ? await likeServices.updateLike(userId, req.params.classId, false)
+            : await likeServices.updateLike(userId, req.params.classId, true);
+      } else {
+        response = await likeServices.addLike(userId, req.params.classId);
+      }
+
+      console.log(response);
       return res.json({
         code: 200,
         success: true,
-
         data: response,
       });
     } else {
