@@ -7,7 +7,7 @@ const routes = (app) => {
     likeController.likeStatus
   );
   app.get(
-    "/ciphershools/api/v1/like",
+    "/ciphershools/api/v1/like/:classId",
     middelWare.isAuthenticated,
     likeController.countLike
   );

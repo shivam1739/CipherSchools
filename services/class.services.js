@@ -30,14 +30,14 @@ const updateClass = async (data, classId) => {
 };
 const getAllClasses = async (creatorId) => {
   const response = await Classes.findAll({
-    include: [{ model: Comment }],
-    // include: [{ model: Like }],
+    include: [{ model: Comment }, { model: Like }],
   });
   return response;
 };
 const getClassByPk = async (id) => {
   const response = await Classes.findByPk(id, {
     include: [{ model: Comment }],
+    include: [{ model: Like }],
   });
   return response;
 };

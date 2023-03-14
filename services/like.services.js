@@ -25,8 +25,8 @@ const getLikesByUser = async (userId, classId) => {
   });
   return response;
 };
-const countLike = async () => {
-  const response = await Like.findAndCountAll();
+const countLike = async (classId) => {
+  const response = await Like.findAndCountAll({});
   return response;
 };
 

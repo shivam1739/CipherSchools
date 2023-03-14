@@ -37,9 +37,9 @@ const likeStatus = async (req, res) => {
   }
 };
 const countLike = async (req, res) => {
-  const response = await likeServices.countLike();
+  const response = await likeServices.countLike(req.params.classId);
   return res.json({
-    code: 404,
+    code: 201,
     success: true,
     message: response,
   });
