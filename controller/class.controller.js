@@ -71,9 +71,27 @@ const getAllClasses = async (req, res) => {
     data: response,
   });
 };
+const getClassByPk = async (req, res) => {
+  const response = await classServices.getClassByPk(req.params.classId);
+  if (!response) {
+    return res.json({
+      messeage: "classes not found",
+      code: 400,
+      success: true,
+      data: response,
+    });
+  }
+  return res.json({
+    messeage: "successfully find class",
+    code: 200,
+    success: true,
+    data: response,
+  });
+};
 module.exports = {
   addClass,
   deleteClass,
   updateClass,
   getAllClasses,
+  getClassByPk,
 };

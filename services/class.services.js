@@ -1,4 +1,4 @@
-const { Classes } = require("../models/index");
+const { Classes, Comment, Riply, Like } = require("../models/index");
 const addClass = async (body, id) => {
   console.log(body, id);
   const response = await Classes.create({
@@ -29,13 +29,19 @@ const updateClass = async (data, classId) => {
   return response;
 };
 const getAllClasses = async (creatorId) => {
-  const response = await Classes.findAll();
+  const response = await Classes.findAll({
+    include: [{ model: Comment }],
+    // include: [{ model: Like }],
+  });
   return response;
 };
 const getClassByPk = async (id) => {
-  const response = await Classes.findByPk(id);
+  const response = await Classes.findByPk(id, {
+    include: [{ model: Comment }],
+  });
   return response;
 };
+
 module.exports = {
   addClass,
   deleteClass,

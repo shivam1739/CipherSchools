@@ -7,6 +7,12 @@ const routes = (app) => {
     classController.getAllClasses
   );
 
+  app.get(
+    "/ciphershools/api/v1/class/find/:classId",
+    middelWare.isAuthenticated,
+    classController.getClassByPk
+  );
+
   app.post(
     "/ciphershools/api/v1/class/add",
     middelWare.isAuthenticated,

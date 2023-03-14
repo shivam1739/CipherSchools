@@ -3,11 +3,14 @@ const classServices = require("../services/class.services");
 
 const likeStatus = async (req, res) => {
   const userId = req.user.id;
-  if (req.body.userId && req.body.classId) {
-    const video = await classServices.getClassByPk(req.body.classId);
+  if (userId && req.params.classId) {
+    const video = await classServices.getClassByPk(req.params.classId);
 
     if (video) {
-      const like = await likeServices.getLikesByUser(userId, req.body.classId);
+      const like = await likeServices.getLikesByUser(
+        userId,
+        req.params.classId
+      );
       const response = like
         ? await likeServices.removeLike(userId, req.body.classId)
         : await likeServices.addLike(userId, req.body.classId);
