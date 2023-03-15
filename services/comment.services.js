@@ -29,7 +29,7 @@ const findCommentByUser = async (id, userId) => {
 const findAllComment = async (classId) => {
   const response = await Comment.findAll({
     where: { classId },
-    include: [{ model: Riply }, { model: User }],
+    include: [{ model: Riply, include: [{ model: User }] }, { model: User }],
   });
   return response;
 };

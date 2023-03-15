@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Like, { foreignKey: "userId" });
       this.hasMany(models.Comment, { foreignKey: "userId" });
       this.hasMany(models.Classes, { foreignKey: "creatorId" });
+      this.hasMany(models.Riply, { foreignKey: "userId" });
       this.belongsToMany(models.Role, { through: "User_roles" });
     }
   }
