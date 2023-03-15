@@ -11,7 +11,6 @@ const likeStatus = async (req, res) => {
         userId,
         req.params.classId
       );
-      console.log(like, "like===========================");
       let response = undefined;
       if (like) {
         response =
@@ -21,8 +20,6 @@ const likeStatus = async (req, res) => {
       } else {
         response = await likeServices.addLike(userId, req.params.classId);
       }
-
-      console.log(response);
       return res.json({
         code: 200,
         success: true,

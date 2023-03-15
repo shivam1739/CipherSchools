@@ -1,4 +1,4 @@
-const { Comment, Riply } = require("../models/index");
+const { Comment, Riply, User } = require("../models/index");
 
 const addComment = async (userId, classId, text) => {
   const response = await Comment.create({
@@ -22,13 +22,14 @@ const deleteComment = async (id, userId) => {
 const findCommentByUser = async (id, userId) => {
   const response = await Comment.findOne({
     where: { id: id, userId: userId },
+    include: [{ model: User }],
   });
   return response;
 };
 const findAllComment = async (classId) => {
   const response = await Comment.findAll({
     where: { classId },
-    include: [{ model: Riply }],
+    include: [{ model: Riply }, { model: User }],
   });
   return response;
 };
@@ -46,6 +47,13 @@ const deleteReply = async (userId, replyId) => {
   });
   return response;
 };
+const findAllReplyByCommentId = async (commentId) => {
+  const response = await Riply.destroy({
+    where: { commentId: commentId },
+  });
+  return response;
+};
+
 module.exports = {
   addComment,
   deleteComment,
@@ -53,4 +61,5 @@ module.exports = {
   findAllComment,
   addReply,
   deleteReply,
+  findAllReplyByCommentId,
 };
